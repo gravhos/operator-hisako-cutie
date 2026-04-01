@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Cutie 💖</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fce4ec;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .contenedor {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0px 15px 35px rgba(255, 105, 180, 0.2);
+            z-index: 1;
+            max-width: 80%;
+        }
+
+        h1 { color: #ad1457; font-size: 2.2rem; margin-bottom: 30px; }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            min-height: 60px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        #si { background-color: #f06292; color: white; }
+        #si:hover { transform: scale(1.1); background-color: #ec407a; }
+
+        #no { 
+            background-color: #f8bbd0; 
+            color: #ad1457; 
+            position: absolute; 
+        }
+
+        .oculto { display: none; }
+
+        h2 { color: #d81b60; font-size: 3rem; margin: 0; }
+        img { width: 180px; margin-bottom: 20px; border-radius: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor" id="interfaz">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v1.Y2lkPTc5MGI3NjExNXAyam83dm93amZ4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/5atPecSVAuS8XQ5q37/giphy.gif" alt="cutie cat">
+        <h1>who's a precious cutie?</h1>
+        <div class="botones">
+            <button id="si">me</button>
+            <button id="no">me</button>
+        </div>
+    </div>
+
+    <div class="contenedor oculto" id="final">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTVoZ3VwZ3VwZ3VwZ3VwZ3VwZ3VwZ3VwZ3VwZ3VwZ3VwZ3VwJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/1zD6YvpxM2YkO6R6qB/giphy.gif" alt="happy">
+        <h2>CORRECT <3</h2>
+    </div>
+
+    <script>
+        const btnNo = document.getElementById('no');
+        const btnSi = document.getElementById('si');
+        const interfaz = document.getElementById('interfaz');
+        const final = document.getElementById('final');
+
+        function moverBotonNo() {
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            btnNo.style.left = x + "px";
+            btnNo.style.top = y + "px";
+        }
+
+        // El segundo botón "me" escapa
+        btnNo.addEventListener('mouseover', moverBotonNo);
+        btnNo.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moverBotonNo();
+        });
+
+        // El primer botón "me" confirma la verdad
+        btnSi.addEventListener('click', () => {
+            interfaz.classList.add('oculto');
+            final.classList.remove('oculto');
+        });
+    </script>
+</body>
+</html>
